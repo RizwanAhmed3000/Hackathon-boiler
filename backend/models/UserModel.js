@@ -20,6 +20,29 @@ const UserSchema = new Schema({
         type: Boolean,
         default: false
     },
+    profilePicture: {
+        type: String,
+        default: ""
+    },
+    coverPicture: {
+        type: String,
+        default: ""
+    },
+    followers: {
+        type: Array,
+        default: []
+    },
+    followings: {
+        type: Array,
+        default: []
+    },
+    description: {
+        type: String,
+        max: 70
+    },
+    city: {
+        type: String,
+    }
 }, { timestamps: true });
 
 export default mongoose.model('User', UserSchema)
