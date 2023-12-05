@@ -15,10 +15,11 @@ export async function updateUser(req, res, next) {
         }
         try {
             const user = await User.findByIdAndUpdate(req.params.userId, { $set: req.body }, { new: true });
+            const { password, ...other } = user._doc;
             res.status(200).send({
                 status: 'success',
                 message: 'User updated successfully',
-                updatedUser: user
+                updatedUser: other
             })
         } catch (error) {
             next(error)

@@ -21,7 +21,7 @@ usersRoutes.put('/:userId', verifyUser, updateUser)
 //usersRoutes.put('/:userId', updateUser) //WITHOUT TOKEN
 
 // DELETE
-usersRoutes.delete('/:userId', verifyToken, deleteUser)
+usersRoutes.delete('/:userId', verifyUser, deleteUser)
 //usersRoutes.delete('/:userId', deleteUser) //WITHOUT TOKEN
 
 // GET
