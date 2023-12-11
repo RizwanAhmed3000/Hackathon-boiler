@@ -27,7 +27,7 @@ const Signup = () => {
     }
 
     //=================SIGN UP USEING FIREBASE===========================//
-    function signupHandler(e) {
+    function signupHandlerWithFirebase(e) {
         e.preventDefault();
         console.log(email.current.value, "=====>>>>> email");
         console.log(username.current.value, "=====>>>>> username");
@@ -67,7 +67,7 @@ const Signup = () => {
         <>
         
             <div className="login">
-                <form className="lContainer" onSubmit={signupHandler}>
+                <form className="lContainer" onSubmit={signupHandlerWithFirebase}>
                     <div className="l-input-group">
                         <input type="email" required name="Email" className="l-input" id="Email" ref={email} />
                         <label className="l-user-label">Email</label>
