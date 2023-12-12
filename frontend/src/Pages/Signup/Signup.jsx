@@ -34,7 +34,7 @@ const Signup = () => {
         console.log(password.current.value, "=====>>>>> password");
         console.log(confirmPassword.current.value, "=====>>>>> confirmPassword");
 
-        if (email.current.value === "" && username.current.value === "" && password.current.value === "" && confirmPassword.current.value === "") {
+        if (email.current.value === "" || username.current.value === "" || password.current.value === "" || confirmPassword.current.value === "") {
             // console.log("Missing fields")
             toast.error('Missing fields', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true, theme: "colored", });
         } else if (password.current.value.length < 8 ){
