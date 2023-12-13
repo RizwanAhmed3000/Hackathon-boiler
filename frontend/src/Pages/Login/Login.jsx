@@ -51,7 +51,7 @@ const Login = () => {
                         <label className="l-user-label">Email</label>
                     </div>
                     <div className="l-input-group">
-                        <input type="password"  name="password" className="l-input" id="password" ref={password}/>
+                        <input type="password" required name="password" className="l-input" id="password" ref={password}/>
                         <label className="l-user-label">Password</label>
                     </div>
                     <button className="l-button searchBtn" type='submit'>Login</button>
