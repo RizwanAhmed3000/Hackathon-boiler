@@ -30,7 +30,7 @@ export async function signUp(req, res, next) {
 //-----------Login------------//
 export async function login(req, res, next) {
     try {
-        const user = await UserModel.findOne({ username: req.body.username }); // FIND BY USERNAME
+        const user = await UserModel.findOne({ email: req.body.email }); // FIND BY USERNAME
         // const user = await UserModel.findOne({ email: req.body.email }); // FIND BY EMAIL
         if (!user) {
             next(createError(404, "User not found"))

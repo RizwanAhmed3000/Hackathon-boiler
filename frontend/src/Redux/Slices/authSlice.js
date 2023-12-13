@@ -28,11 +28,21 @@ const AuthSlice = createSlice({
             state.user = null;
             state.error = false;
         },
+        signupPending: (state) => {
+            state.isLoading = true;
+        },
+        signupSuccess: (state, { payload }) => {
+            state.isLoading = false;
+        },
+        signupFailed: (state, { payload }) => {
+            state.isLoading = false;
+            state.error = payload.message;
+        },
     }
 });
 
 const { reducer, actions } = AuthSlice;
 
-export const { loginPending, loginSuccess, loginFailed, logout } = actions;
+export const { loginPending, loginSuccess, loginFailed, logout, signupPending, signupSuccess, signupFailed } = actions;
 
 export default reducer;

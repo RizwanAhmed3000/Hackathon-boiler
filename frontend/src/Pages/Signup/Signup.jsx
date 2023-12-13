@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from "axios";
 import './signup.css'
 import 'react-toastify/dist/ReactToastify.css';
 import {auth, createUserWithEmailAndPassword, db, doc, setDoc} from "../../firebaseConfig/config.js"
-import { loginFailed, loginPending, loginSuccess } from '../../Redux/Slices/authSlice.js';
+import { signupFailed, signupPending, signupSuccess } from '../../Redux/Slices/authSlice.js';
 
 const Signup = () => {
 
@@ -14,7 +14,8 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState({});
+    const [isError, setIsError] = useState({});
+    const {user, isLoading, error } = useSelector(state=> state.auth)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -88,16 +89,16 @@ const Signup = () => {
             toast.warning('Password does not match', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true, theme: "colored", });
             
         } else {
-            dispatch(loginPending());
+            dispatch(signupPending());
             try {
                 const res = await axios.post('/auth/register' , {username ,email, password});
                 console.log(res?.data?.data)
-                dispatch(loginSuccess(res?.data?.data))
+                dispatch(signupSuccess())
                 navigate('/login')
             } catch (error) {
                 console.log(error.response.data);
-                setError(error.response)
-                dispatch(loginFailed(error.response))
+                setIsError(error.response)
+                dispatch(signupFailed(error.response))
             }
         }
     }
