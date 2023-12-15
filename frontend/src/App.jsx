@@ -9,14 +9,14 @@ import { store } from './Redux/Store';
 function App() {
   return (
     <>
-    <Provider store={store}> 
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
+          </Routes>
+        </BrowserRouter>
       </Provider>
     </>
   );
