@@ -58,6 +58,9 @@ input:valid {
     font-weight: 500;
     font-size: 16px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .l-input:focus~label,

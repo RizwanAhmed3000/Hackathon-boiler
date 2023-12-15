@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import { auth, signInWithEmailAndPassword } from "../../firebaseConfig/config.js"
 import { loginFailed, loginPending, loginSuccess } from '../../Redux/Slices/authSlice.js';
@@ -84,7 +85,16 @@ const Login = () => {
                         <input type="password" required name="password" className="l-input" id="password" onChange={(e) => setPassword(e.target.value)} />
                         <label className="l-user-label">Password</label>
                     </div>
-                    <button className="l-button searchBtn" type='submit'>Login</button>
+                    <button className="l-button searchBtn" type='submit'>{isLoading ? (<TailSpin
+                        height="20"
+                        width="20"
+                        color="#fff"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                    />) : 'Login'}</button>
                     {/* {isError && <span className="err">{isError.message}</span>} */}
                 </form>
                 <ToastContainer position="bottom-left" autoClose={5000} newestOnTop={false} hideProgressBar={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
