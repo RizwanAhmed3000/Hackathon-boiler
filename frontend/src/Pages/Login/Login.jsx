@@ -7,6 +7,7 @@ import { auth, signInWithEmailAndPassword } from "../../firebaseConfig/config.js
 import { loginFailed, loginPending, loginSuccess } from '../../Redux/Slices/authSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import techCompany from "../../assets/techCompany.mp4"
 
 
 
@@ -75,29 +76,34 @@ const Login = () => {
 
     return (
         <>
-            <div className="login">
-                <form className="lContainer" onSubmit={loginpWithMongo}>
-                    <div className="l-input-group">
-                        <input type="email" required name="email" className="l-input" id="username" onChange={(e) => setEmail(e.target.value)} />
-                        <label className="l-user-label">Email</label>
-                    </div>
-                    <div className="l-input-group">
-                        <input type="password" required name="password" className="l-input" id="password" onChange={(e) => setPassword(e.target.value)} />
-                        <label className="l-user-label">Password</label>
-                    </div>
-                    <button className="l-button searchBtn" type='submit'>{isLoading ? (<TailSpin
-                        height="20"
-                        width="20"
-                        color="#fff"
-                        ariaLabel="tail-spin-loading"
-                        radius="1"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                        visible={true}
-                    />) : 'Login'}</button>
-                    {/* {isError && <span className="err">{isError.message}</span>} */}
-                </form>
-                <ToastContainer position="bottom-left" autoClose={5000} newestOnTop={false} hideProgressBar={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
+            <div className='container' style={{ display: "flex" }}>
+                <div className="imgTitle" style={{flex: 4}}>
+                    <img src={require("../../assets/tech_Company.png")} alt="" width={500} height={500} />
+                </div>
+                <div className="login" style={{flex: 5}}>
+                    <form className="lContainer" onSubmit={loginpWithMongo} style={{width: "80%"}}>
+                        <div className="l-input-group">
+                            <input type="email" required name="email" className="l-input" id="username" onChange={(e) => setEmail(e.target.value)} />
+                            <label className="l-user-label">Email</label>
+                        </div>
+                        <div className="l-input-group">
+                            <input type="password" required name="password" className="l-input" id="password" onChange={(e) => setPassword(e.target.value)} />
+                            <label className="l-user-label">Password</label>
+                        </div>
+                        <button className="l-button searchBtn" type='submit'>{isLoading ? (<TailSpin
+                            height="20"
+                            width="20"
+                            color="#fff"
+                            ariaLabel="tail-spin-loading"
+                            radius="1"
+                            wrapperStyle={{}}
+                            wrapperClass=""
+                            visible={true}
+                        />) : 'Login'}</button>
+                        {/* {isError && <span className="err">{isError.message}</span>} */}
+                    </form>
+                    <ToastContainer position="bottom-left" autoClose={5000} newestOnTop={false} hideProgressBar={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored" />
+                </div>
             </div>
         </>
     )
