@@ -55,7 +55,7 @@ const Login = () => {
         e.preventDefault();
         console.log(email, "=====>>>>> email");
         console.log(password, "=====>>>>> password");
-        if (email === "" && password === "") {
+        if (email === "" || password === "") {
             // console.log("Missing fields")
             toast.error('Missing fields', { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true, theme: "colored", });
 
@@ -69,7 +69,8 @@ const Login = () => {
             } catch (error) {
                 console.log(error.response.data);
                 // setError(error.response)
-                dispatch(loginFailed(error.response))
+                dispatch(loginFailed(error.response.data))
+                toast.error(error.response.data.message, { position: "top-center", autoClose: 5000, hideProgressBar: false, closeOnClick: true, pauseOnHover: true, theme: "colored", });
             }
         }
     }
@@ -77,11 +78,11 @@ const Login = () => {
     return (
         <>
             <div className='container' style={{ display: "flex" }}>
-                <div className="imgTitle" style={{flex: 4}}>
+                <div className="imgTitle" style={{ flex: 4 }}>
                     <img src={require("../../assets/tech_Company.png")} alt="" width={500} height={500} />
                 </div>
-                <div className="login" style={{flex: 5}}>
-                    <form className="lContainer" onSubmit={loginpWithMongo} style={{width: "80%"}}>
+                <div className="login" style={{ flex: 5 }}>
+                    <form className="lContainer" onSubmit={loginpWithMongo} style={{ width: "80%" }}>
                         <div className="l-input-group">
                             <input type="email" required name="email" className="l-input" id="username" onChange={(e) => setEmail(e.target.value)} />
                             <label className="l-user-label">Email</label>
