@@ -11,7 +11,9 @@ import techCompany from "../../assets/techCompany.mp4"
 
 
 
-const Login = () => {
+const Login = ({ type }) => {
+
+    console.log(type)
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -62,10 +64,10 @@ const Login = () => {
         } else {
             dispatch(loginPending());
             try {
-                const res = await axios.post('/auth/login', { email, password });
+                const res = type !== "student" ? await axios.post('/admin/login', { email, password }) : await axios.post('/auth/login', { email, password })
                 console.log(res?.data?.data)
                 dispatch(loginSuccess(res.data.data))
-                navigate('/')
+                type !== "student" ? navigate('/dashboard') : navigate('/home')
             } catch (error) {
                 console.log(error.response.data);
                 // setError(error.response)
@@ -77,6 +79,13 @@ const Login = () => {
 
     return (
         <>
+            <div className="homeTitle" style={{ textAlign: "center", fontSize: 25, color: "#006ce4" }}>{
+                type === "student" ? (
+                    <h1>Student Login</h1>
+                ) : (
+                    <h1>Admin Login</h1>
+                )
+            }</div>
             <div className='container' style={{ display: "flex" }}>
                 <div className="imgTitle" style={{ flex: 4 }}>
                     <img src={require("../../assets/tech_Company.png")} alt="" width={500} height={500} />

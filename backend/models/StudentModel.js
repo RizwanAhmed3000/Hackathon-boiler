@@ -1,11 +1,19 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const UserSchema = new Schema({
-    username: {
+const StudentSchema = new Schema({
+    studentId: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        required: true
+    },
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
     },
     email: {
         type: String,
@@ -27,17 +35,9 @@ const UserSchema = new Schema({
         type: String,
         default: ""
     },
-    coverPicture: {
-        type: String,
-        default: ""
-    },
-    description: {
-        type: String,
-        max: 70
-    },
-    batch: {
+    course: {
         type: String,
     }
 }, { timestamps: true });
 
-export default mongoose.model('User', UserSchema)
+export default mongoose.model('Student', StudentSchema)

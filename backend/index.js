@@ -8,6 +8,8 @@ import cors from 'cors';
 import { connectDB } from './Config/MongoConfig.js'
 import authRoutes from './routes/authRoutes.js';
 import usersRoutes from './routes/usersRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
+import attendanceRoutes from './routes/attendanceRoutes.js';
 
 // ------DOT ENV CONFIG------//
 dotenv.config();
@@ -24,7 +26,9 @@ app.use(cors())
 // --------ROUTES---------//
 
 app.use('/api/auth', authRoutes)
+app.use('/api/admin', adminRoutes)
 app.use('/api/users', usersRoutes)
+app.use('/api/attendance', attendanceRoutes)
 
 
 //---------ERROR MIDDLEWARE---------//
